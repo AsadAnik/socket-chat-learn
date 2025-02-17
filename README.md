@@ -1,4 +1,4 @@
-## Web Sockets
+## Learn Socket for Chat App
 
 WebSocket is a computer communications protocol, providing full-duplex communication channels over a single TCP connection. The WebSocket protocol was standardized by the IETF as RFC 6455 in 2011. The current API specification allowing web applications to use this protocol is known as WebSockets.
 
@@ -25,7 +25,7 @@ Socket.IO is ***a library that enables low-latency, bidirectional and event-bas
 
 Socket.IO was created in 2010. It was developed **to use open connections to facilitate realtime communication**, still a relatively new phenomenon at the time. Socket.IO allows bi-directional communication between client and server.
 
-[/readme-assets/1.png](/readme-assets/1.png)
+![./readme-assets/1.png](./readme-assets/1.png)
 
 **`Full-Duplex Communication:`** Unlike traditional web communication (HTTP). Where the client sends a request and waits for a response. WebSockets allow for bidirectional communication. Both the client and server can send messages to each other independently.
 
