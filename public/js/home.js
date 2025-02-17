@@ -7,5 +7,3 @@ inputForm.addEventListener('submit', (event) => {
     const userName = inputName.value;
     window.location.href = `http://localhost:3000/chat?name=${userName}`;
 });
-
-// 
