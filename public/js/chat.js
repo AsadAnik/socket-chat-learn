@@ -1,5 +1,6 @@
 const socket = io("ws://localhost:3000");
 
+
 // region Add User Name to Chat
 let userName = '';
 (() => {
@@ -13,8 +14,9 @@ let userName = '';
     document.querySelector('.chat-with').innerHTML = userNameParam;
 })();
 
+
 // region Append Message
-function appendMessage(data = { messageText: '', userName: ''  }) {
+function appendMessage(data = { messageText: '', userName: '' }) {
     const chatMessages = document.getElementById('chat-messages');
     const botMessage = document.createElement('div');
     const botName = document.createElement('div');
@@ -63,6 +65,17 @@ function sendMessage() {
     // }, 1000);
 }
 
+// region Add Typing UI..
+function addTypingUI(username = '') {
+    const typingIndicator = document.querySelector('.typing-indicator');
+    typingIndicator.textContent = `${username} is typing...`;
+
+    // Clear Typing UI 
+    setTimeout(() => {
+        typingIndicator.textContent = '';
+    }, 3000);
+}
+
 // Allow sending message with Enter key
 // region Enter Key to Submit
 document.getElementById('user-input').addEventListener('keypress', function (event) {
@@ -77,9 +90,24 @@ document.getElementById('send-msg-btn').addEventListener('click', function (even
     sendMessage();
 });
 
+// region Key Pressing Event
+document.getElementById('user-input').addEventListener('keydown', function (event) {
+    if (event.key) {
+        // Send Typing Event to Server
+        socket.emit('typing-client', { userName });
+    }
+});
+
 // region Socket Client..
 // Receive messages from the Server
 socket.on('server-message', (data) => {
     // Append Message to UI..
     appendMessage(data);
+});
+
+// region Typing Event..
+socket.on('typing-server', (data) => {
+    console.log(`${data.userName} is typing...`);
+    // Add Typing UI..
+    addTypingUI(data.userName);
 });

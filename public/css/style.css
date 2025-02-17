@@ -105,3 +105,10 @@ body {
 .chat-input button:hover {
     background-color: #357abd;
 }
+
+/* TYPING INDICATING... */
+.typing-indicator {
+    font-size: x-small;
+    color: gray;
+    max-height: fit-content;
+}

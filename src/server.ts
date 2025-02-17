@@ -19,9 +19,15 @@ io.on('connection', (socket) => {
     socket.emit('message', "Welcome to the Chat Server!");
 
     // Receive a message from the client
-    socket.on('client-message', (message) => {
+    socket.on('client-message', (data) => {
         // Send the message to all connected clients
-        socket.broadcast.emit('server-message', message);
+        socket.broadcast.emit('server-message', data);
+    });
+
+    // Receive the Typing Event from Client..
+    socket.on('typing-client', (data) => {
+        // Send the message to all connected clients
+        socket.broadcast.emit('typing-server', data);
     });
 
     io.on('disconnect', () => {
