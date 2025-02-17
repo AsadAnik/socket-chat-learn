@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="/socket.io/socket.io.js" async defer></script>
+    <script src="../js/chat.js" async defer></script>
+</head>
+
+<body>
+    <div class="chat-container">
+        <!-- Chat Header Section -->
+        <div class="chat-header">Welcome <span class="chat-with"></span></div>
+
+        <!-- Message Section -->
+        <div class="chat-messages" id="chat-messages">
+            <div class="message bot">Hello! How can I assist you today?</div>
+        </div>
+
+        <!-- Chat Input Section -->
+        <div class="chat-input">
+            <input type="text" id="user-input" placeholder="Type a message...">
+            <!-- <button onclick="sendMessage()">Send</button> -->
+            <button id="send-msg-btn">Send</button>
+        </div>
+    </div>
+</body>
+
+</html>
